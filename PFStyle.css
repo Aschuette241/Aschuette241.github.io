@@ -60,7 +60,7 @@ img{
     border:3px solid white;
     border-radius: 10px;
 }
-/*iframe{
+iframe{
     display: block;
     width:50%;
     height:60%;
@@ -71,7 +71,7 @@ img{
     border:3px solid white;
     border-radius: 10px;
 }
-*/
+
 #title{
     display: block;
     text-align: center;
