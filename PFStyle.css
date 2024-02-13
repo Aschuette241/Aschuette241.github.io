@@ -60,6 +60,17 @@ img{
     border:3px solid white;
     border-radius: 10px;
 }
+iframe{
+    display: block;
+    width:50%;
+    height:100%;
+    align-items: center;
+    margin-right: auto;
+    margin-left:auto;
+    margin-bottom:20px;
+    border:3px solid white;
+    border-radius: 10px;
+}
 #title{
     display: block;
     text-align: center;
@@ -81,4 +92,5 @@ img{
     background-color: darkcyan;
     border: 2px solid white;
     border-radius:5px;
+    margin-top:20px;
 }
