@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 body{
     
     animation-name: intro;
     animation-duration: 1.5s;
     /*background-image: url(Stars\ \(2\).jpg);*/
-    background-color: grey;
+    background: linear-gradient(purple, blue) no-repeat;
+    min-height: 100vh;
     background-size:cover;
+    font-family: "Roboto", sans-serif;
 
 }
 @keyframes intro{
@@ -19,22 +23,49 @@ body{
     border-radius: 5px;
     margin-top: 20px;
     padding-top: 20px;
+    
 }
+#newHeader{
+    margin-top:100px;
+    text-align: center;
+    color:white;
+    font-size: 50pt;
+    font-weight: lighter;
+    
+}
+#subtext{
+    text-align: center;
+    color:white;
+    font-size: 20pt;
+    font-weight: lighter;
+}
+#text{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    color:white;
+    font-size: 15pt;
+    font-weight: lighter;
+}
+
 #links{
-    background-color: black;
+    background-color: rgba(0,0,0,0.5);
     text-align: center;
     color:white;
     border: 2px solid white;
     border-radius: 5px;
-    margin-top: 20px;
-    padding-top:20px;
-    padding-bottom: 20px;
+    padding-top:8px;
+    padding-bottom: 5px;
+    
+    
 }
+
 a{
     color:white;
     font-size: 15pt;
     padding:5px;
-    border:2px solid black;
+    border:2px solid ;
+    border-color: rgba(0,0,0,0);
     border-radius:10px;
     transition: 0.5s;
     white-space: nowrap;
@@ -58,7 +89,7 @@ img{
     margin-right: auto;
     margin-left:auto;
     border:3px solid white;
-    border-radius: 10px;
+    border-radius: 50%;
 }
 iframe{
     display: block;
@@ -94,4 +125,15 @@ iframe{
     border: 2px solid white;
     border-radius:5px;
     margin-top:20px;
+}
+video{
+    display: block;
+    width:100%;
+    height:50%;
+    align-items: center;
+    margin-right: auto;
+    margin-left:auto;
+    margin-bottom:20px;
+    border:3px solid white;
+    border-radius: 10px;
 }
