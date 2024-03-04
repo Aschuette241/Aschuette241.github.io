@@ -5,7 +5,7 @@ body{
     animation-name: intro;
     animation-duration: 1.5s;
     /*background-image: url(Stars\ \(2\).jpg);*/
-    background: linear-gradient(purple, blue) no-repeat;
+    background: linear-gradient(darkgreen, blue) no-repeat;
     min-height: 100vh;
     background-size:cover;
     font-family: "Roboto", sans-serif;
@@ -94,7 +94,7 @@ a:hover{
     margin-bottom: 10px;
     
 }
-img{
+#img{
     display: block;
     width: 50%;
     height: 50%;
@@ -152,4 +152,14 @@ iframe{
     margin-top:20px;
     border:3px solid white;
     border-radius: 10px;
+}
+#img2{
+    display: block;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    margin-right: auto;
+    margin-left:auto;
+    border:3px solid white;
+    
 }
