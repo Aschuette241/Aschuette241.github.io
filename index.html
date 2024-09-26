@@ -7,6 +7,7 @@
     <title>Home Page </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="portStyle.css">
 </head>
 
@@ -25,9 +26,10 @@
                 <a class="nav-item nav-link" href="#AboutMe">About</a>
                 <a class="nav-item nav-link" href="#3dart">3D Art</a>
                 <a class="nav-item nav-link" href="#games">Games</a>
-                <a class="nav-item nav-link" href="interactives.html">Interactive Media</a>
+                <a class="nav-item nav-link" href="#interactives">Interactive Media</a>
                 <a class="nav-item nav-link" href="webdev.html">Web Dev</a>
-                <a class="nav-item nav-link" href="resume.html">Resume</a>
+                <a class="nav-item nav-link" href="#resumee">Resume</a>
+                <a class="nav-item nav-link" href="#myInfo">Contact Me</a>
             </div>
         </div>
 
@@ -46,18 +48,21 @@
             <div class="col-md-3"></div>
             <div class="col-md-6" id="newHeader">
                 <h1>About Me</p>
-                <img src="mii2.jpeg" id="img">
+                    <img src="mii2.jpeg" id="img">
             </div>
             <div class="col-md-3"></div>
         </div>
         <div class='row'>
             <div class='col-md-2'></div>
             <div class='col-md-8' id="text">
-                <p>I am an ambitious 3D artist, game developer, web developer, and interactive experience designer. I am currently pursuing a degree in
+                <p>I am an ambitious 3D artist, game developer, web developer, and interactive experience designer. I am
+                    currently pursuing a degree in
                     Games, Interactive Media, and Mobile Technology at Boise State University.</p>
                 <br>
                 <p> Through this process, I have obtained a wide variety of skills in various areas, such as
-                    programming, game design, photography, video, audio, web design, and UX design. I am proficient in the Unity engine, being able to program 2D, 3D, AR and VR games and interactive experiences, although I am most passionate about 3D modeling and animation, as well as VFX. For this, I
+                    programming, game design, photography, video, audio, web design, and UX design. I am proficient in
+                    the Unity engine, being able to program 2D, 3D, AR and VR games and interactive experiences,
+                    although I am most passionate about 3D modeling and animation, as well as VFX. For this, I
                     primarily am proficient in Maya, and occasionally use Blender, as well as Photoshop and Adobe
                     Substance Painter 3D.</p>
                 <br>
@@ -76,32 +81,39 @@
                     <a href="Project_1.html">
                         <img id="portImg" src="Barrel.png">
                     </a>
-                
-               </div>
-            </div>
-            <div class="col-md-3">
-                <div class="image-container">
-                <a href="Projects/Project_1.html">
-                    <img id="portImg" src="CoffeeShop.png">
-                </a>
+
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="image-container">
-                <a href="Projects/Project_1.html">
-                    <img id="portImg" src="DragWorld.png">
-                </a>
+                    <a href="Projects/Project_1.html">
+                        <img id="portImg" src="CoffeeShop.png">
+                    </a>
+                </div>
             </div>
+            <div class="col-md-3">
+                <div class="image-container">
+                    <a href="Projects/Project_1.html">
+                        <img id="portImg" src="DragWorld.png">
+                    </a>
+                </div>
             </div>
             <div class="col-md-3">
                 <a href="Projects/Project_1.html">sample image</a>
             </div>
-            
+
             <!--Games-->
-            
+
         </div>
         <div class="row" id="games">
             <h2 id="newHeader">Games</h2>
+            <div class="col-md-3">
+                <div class="image-container">
+                    <a href="MoonGameJam.html">
+                        <img id="portImg" src="MoonGame.png">
+                    </a>
+                </div>
+            </div>
             <div class="col-md-3">
                 <div class="image-container">
                     <a href="Projects/Project_1.html">
@@ -109,11 +121,6 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-3"><div class="image-container">
-                <a href="Projects/Project_1.html">
-                    <img id="portImg" src="MoonGame.png">
-                </a>
-            </div></div>
             <div class="col-md-3"></div>
             <div class="col-md-3"></div>
         </div>
@@ -129,41 +136,84 @@
             </div>
             <div class="col-md-3">
                 <div class="image-container">
-                    <a href="Projects/Project_1.html">
+                    <a href="PoorDan.html">
                         <img id="portImg" src="pdiiad.png">
                     </a>
                 </div>
             </div>
         </div>
     </div>
+    <!--Resume-->
+    <div class="container">
+        <div class="row" id="resumee">
+            <div class="col-md-12">
+                <h1 id="newHeader">Resume</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="image-container">
+                <img id="fsImage" src="resume.png">
+            </div>
+        </div>
+    </div>
+
+    
+    <!--Contatc-->
+    <div class="container">
+        <div class="row" id="myInfo">
+            <div class="col-md-12">
+                <h1 id="newHeader">Contact Me!</h1>
+                <p id="text">Want to get to know me better or reach out? Here is my info:
+                    <br>
+                    Phone: <a href="tel:2088806746"><i style="font-size:24px" class="fa">&#xf095;</i> (208)-880-6746</a>
+                    <br>
+                    Email: <a href="mailto:aschuette241@gmail.com"><i style="font-size:24px" class="fa">&#xf0e0;</i>
+                        aschuette241@gmail.com</a>
+                    <br>
+
+                    Socials:
+
+                    <a href="https://www.linkedin.com/in/austin-schuette/"><i style="font-size:24px"
+                            class="fa">&#xf08c;</i></a>
+                    <a href="https://www.youtube.com/channel/UCYSFTAzqDGKOtEmbTNgZ00g"><i style="font-size:24px"
+                            class="fa">&#xf16a;</i></a>
+                </p>
+
+
+
+                <br>
+            </div>
+        </div>
+    </div>
     <script>
         const headerScroll = document.querySelector('.navbar');
-        
+
         window.addEventListener('scroll', () => {
-            if(window.scrollY > 50) {
+            if (window.scrollY > 50) {
                 headerScroll.classList.add('navbar-scrolled');
             }
-            if(window.scrollY < 50) {
+            if (window.scrollY < 50) {
                 headerScroll.classList.remove('navbar-scrolled');
             }
         })
         document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('.nav-link');
+            const navLinks = document.querySelectorAll('.nav-link');
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            
-            navLinks.forEach(link => link.classList.remove('active'));
-            
-            
-            this.classList.add('active');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+
+                    navLinks.forEach(link => link.classList.remove('active'));
+
+
+                    this.classList.add('active');
+                });
+            });
         });
-    });
-});
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
