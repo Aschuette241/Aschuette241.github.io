@@ -9,7 +9,7 @@ html {
 body {
     animation-name: intro;
     animation-duration: 2s;
-    background: linear-gradient(darkgreen, blue, darkgreen) no-repeat;
+    background-image: url("Baground2.jpg");
 
     background-size: cover;
     min-height: 100vh;
@@ -89,7 +89,7 @@ body {
     padding-right: 20%;
     margin-bottom:2%;
     margin-top: 10%;
-    background: black;
+    
 }
 #pageTitle {
     font-weight: bold;
@@ -142,12 +142,13 @@ body {
 }
 
 .image-container {
-    width: 100%; 
+    width: 108%; 
     height: 100%; 
     overflow: hidden; 
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 #portImg{
     display: block;
@@ -193,5 +194,10 @@ body {
     background-color: lightgrey;
     color: white;
     text-align: center;
+    
+}
+hr {
+    border: 3px solid #607E7E;
+    
     
 }
