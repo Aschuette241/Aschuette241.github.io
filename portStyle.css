@@ -65,7 +65,7 @@ body {
 
 .nav-item:hover {
     color: lightgrey;
-    border: 2px solid white;
+    border: 2px solid darkcyan;
 
 }
 .nav-link{
@@ -73,8 +73,12 @@ body {
 }
 .nav-link.active
 {
-    color:red !important;
+    color:darkcyan !important;
     font-weight: bolder;
+}
+.navbar-brand
+{
+    color:darkcyan;
 }
 
 
@@ -149,6 +153,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
     
 }
 #portImg{
