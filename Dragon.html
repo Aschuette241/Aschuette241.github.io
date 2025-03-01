@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home Page </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="portStyle.css">
+</head>
+<body id="theBody">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand">A S</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--Links-->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html#theBody">Home</a>
+                <a class="nav-item nav-link" href="index.html#3dart">3D Art</a>
+                <a class="nav-item nav-link" href="index.html#games">Games</a>
+                <a class="nav-item nav-link" href="index.html#interactives">Interactive Media</a>
+                <a class="nav-item nav-link" href="index.html#webdev">Web Dev</a>
+                <a class="nav-item nav-link" href="index.html#AboutMe">About</a>
+                <a class="nav-item nav-link" href="index.html#resumee">Resume</a>
+                <a class="nav-item nav-link" href="index.html#myInfo">Contact Me</a>
+            </div>
+        </div>
+
+    </nav>
+    <!--End navbar-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 id="pageTitle">Legend of the Dragon World</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="image-container">
+                    <iframe width="1407" height="594" src="https://www.youtube.com/embed/khYXyxjRXPE" title="Legend of the Dragon World" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <p id="text">This was an earlier animation project I made based on a story I had created. This was my first real deep dive into doing any sort of animation involving 3D.
+                </p>
+            </div>
+        </div>
+        
+
+    <script>
+        const headerScroll = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                headerScroll.classList.add('navbar-scrolled');
+            }
+            if (window.scrollY < 50) {
+                headerScroll.classList.remove('navbar-scrolled');
+            }
+        })
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+
+                    navLinks.forEach(link => link.classList.remove('active'));
+
+
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
