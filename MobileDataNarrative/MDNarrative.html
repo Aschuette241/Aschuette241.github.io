@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src='Assets/JS/React/Component/MDNReact.js' type='text/babel'></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+    <script src="https://kit.fontawesome.com/cb3e255eb1.js" crossorigin="anonymous"></script>
+    <link href="Assets/JS/React/Component/MDNStyles.css" rel="stylesheet">
+</head>
+ 
+
+    <body>
+        <div id="BackGround">
+    
+        <div id="react-data-table"></div>
+        <!--End of Data table, start of graph 1-->
+        <h1 id="GTitle">Guitar Data</h1>
+        <div id="my_dataviz"></div>
+        <h1 id="GTitle">Piano Data</h1>
+        <div id="my_dataviz2"></div>
+        <h1 id="GTitle">Artist Frequency</h1>
+        <div id="my_dataviz3"></div>
+
+
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-4'></div>
+                <div class='col-md-4'>
+                    <script>
+
+                        // set the dimensions and margins of the graph
+                        var margin = { top: 10, right: 30, bottom: 30, left: 60 },
+                            width = 700 - margin.left - margin.right,
+                            height = 540 - margin.top - margin.bottom;
+
+                        // append the svg object to the body of the page
+                        var svg = d3.select("#my_dataviz")
+                            .append("svg")
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                            .attr("transform",
+                                "translate(" + margin.left + "," + margin.top + ")");
+
+                        //Read the data
+
+                        let data = [
+                            {
+                                My_Rating: 10,
+                                Year_Released: 1990,
+                                Song_Name: "Cliffs of Dover",
+                                Song_Artist: "Eric Johnson",
+                                My_Reason: "Amazing guitar song with a very iconic riff",
+
+                            },
+                            {
+                                My_Rating: 10,
+                                Year_Released: 1978,
+                                Song_Name: "Sultans of Swing",
+                                Song_Artist: "Dire Straits",
+                                My_Reason: "One of my personal favorite songs, I spent a lot of time learning this",
+
+                            },
+                            {
+                                My_Rating: 9.8,
+                                Year_Released: 1976,
+                                Song_Name: "Hotel California",
+                                Song_Artist: "The Eagles",
+                                My_Reason: "Great song with not only a very iconic riff on a 12 string guitar, but also one of the most iconic guitar solos.",
+
+                            },
+                            {
+                                My_Rating: 10,
+                                Year_Released: 1972,
+                                Song_Name: "Highway Star",
+                                Song_Artist: "Deep Purple",
+                                My_Reason: "I really like both of the solos of this song, and the intro is also really cool",
+
+                            },
+                            {
+                                My_Rating: 10,
+                                Year_Released: 1985,
+                                Song_Name: "Money For Nothing",
+                                Song_Artist: "Dire Straits",
+                                My_Reason: "The main riff is very catchy, poweful, and just has the essence of rock",
+
+                            },
+                            {
+                                My_Rating: 9.7,
+                                Year_Released: 1971,
+                                Song_Name: "Roundabout",
+                                Song_Artist: "Yes",
+                                My_Reason: "To be continued...I like both the parts where it switches between acoustic and electric guitar, and the opening riff is like no other",
+
+                            },
+                            {
+                                My_Rating: 9.7,
+                                Year_Released: 1983,
+                                Song_Name: "The Trooper",
+                                Song_Artist: "Iron Maiden",
+                                My_Reason: "I really like the layered guitar part of this one",
+
+                            },
+                            {
+                                My_Rating: 8.2,
+                                Year_Released: 1991,
+                                Song_Name: "Under The Bridge",
+                                Song_Artist: "Red Hot Chili Peppers",
+                                My_Reason: "Iconic song, as well as the switch from the more mellow sound to the second and third parts",
+
+                            },
+                            {
+                                My_Rating: 9.3,
+                                Year_Released: 1973,
+                                Song_Name: "Free Bird",
+                                Song_Artist: "Lynyrd Skynyrd",
+                                My_Reason: "This song is great and energetic, however, it's first half is a bit slow",
+
+                            },
+                            {
+                                My_Rating: 9.2,
+                                Year_Released: 2001,
+                                Song_Name: "Tribute",
+                                Song_Artist: "Tenacious D",
+                                My_Reason: "A tribute to the best song in the world does its job well",
+
+                            },
+                            {
+                                My_Rating: 8.3,
+                                Year_Released: 1970,
+                                Song_Name: "Mississippi Queen",
+                                Song_Artist: "Mountain",
+                                My_Reason: "Iconic riff but a bit shorter than I would like it to be",
+
+                            },
+                            {
+                                My_Rating: 8.2,
+                                Year_Released: 1973,
+                                Song_Name: "Dream On",
+                                Song_Artist: "Aerosmith",
+                                My_Reason: "I want to fall off a cliff like Kratos when I hear this",
+
+                            },
+                            {
+                                My_Rating: 9.4,
+                                Year_Released: 1989,
+                                Song_Name: "Kickstart My Heart",
+                                Song_Artist: "Mötley Crüe",
+                                My_Reason: "The way this one sounds like a revving engine at the start and then immediatelty kicks off is awesome",
+
+                            },
+                            {
+                                My_Rating: 8.3,
+                                Year_Released: 1970,
+                                Song_Name: "Paranoid",
+                                Song_Artist: "Black Sabbath",
+                                My_Reason: "I like the cripsy tone of the guitar at the beginning",
+
+                            },
+                            {
+                                My_Rating: 9.5,
+                                Year_Released: 2010,
+                                Song_Name: "Nightmare",
+                                Song_Artist: "Avenged Sevenfold",
+                                My_Reason: "One of my favorite Ax7 songs, I love every part of the guitar on this",
+
+                            },
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 2010,
+                                Song_Name: "Buried Alive",
+                                Song_Artist: "Avenged Sevenfold",
+                                My_Reason: "One of the softer Ax7 songs, the guitar intro is very nice and smooth, but also has a lot of emotion to it",
+
+                            },
+                            {
+                                My_Rating: 8.2,
+                                Year_Released: 2013,
+                                Song_Name: "Hail To The King",
+                                Song_Artist: "Avenged Sevenfold",
+                                My_Reason: "This one is sick, but loses points for making me detune half the strings on my guitar",
+
+                            },
+                            {
+                                My_Rating: 7.5,
+                                Year_Released: 2003,
+                                Song_Name: "Unholy Confessions",
+                                Song_Artist: "Avenged Sevenfold",
+                                My_Reason: "Not my favorite song, but the guitar is pretty sick at the beginning",
+
+                            },
+                            {
+                                My_Rating: 9,
+                                Year_Released: 2005,
+                                Song_Name: "Beast and the Harlot",
+                                Song_Artist: "Avenged Sevenfold",
+                                My_Reason: "Some very awesome guitar solos, as well as the background part is nice too",
+
+                            },
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 2013,
+                                Song_Name: "Shepherd of Fire",
+                                Song_Artist: "Avenged Sevenfold",
+                                My_Reason: "This song very much reminds me of Enter Sandman, but is different enough to be unique and still sounds cool",
+
+                            },
+                            {
+                                My_Rating: 9,
+                                Year_Released: 2005,
+                                Song_Name: "Bat Country",
+                                Song_Artist: "Avenged Sevenfold",
+                                My_Reason: "One of the best Ax7 solos in my opinon",
+
+                            },
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1988,
+                                Song_Name: "One",
+                                Song_Artist: "Metallica",
+                                My_Reason: "The intro is great, with the 3 different guitar parts all harmonizing really well",
+
+                            },
+                            {
+                                My_Rating: 9,
+                                Year_Released: 1986,
+                                Song_Name: "Master of Puppets",
+                                Song_Artist: "Metallica",
+                                My_Reason: "Every part of this song has something different and memmorable",
+
+                            },
+                            {
+                                My_Rating: 7.5,
+                                Year_Released: 1967,
+                                Song_Name: "Purple Haze",
+                                Song_Artist: "Jimmy Hendrix",
+                                My_Reason: "I like the main riff of this song",
+
+                            },
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1958,
+                                Song_Name: "Johnny B. Goode",
+                                Song_Artist: "Chuck Berry",
+                                My_Reason: "Very iconic, classic rock and roll song, even better when Marty Mcfly did it",
+
+                            },
+                            {
+                                My_Rating: 9.5,
+                                Year_Released: 2001,
+                                Song_Name: "Chop Suey",
+                                Song_Artist: "System of a Down",
+                                My_Reason: "I love every par of this song, from the more dramatic intro, to the more metal parts, to the chorus",
+
+                            },
+                            {
+                                My_Rating: 9,
+                                Year_Released: 1998,
+                                Song_Name: "Sugar",
+                                Song_Artist: "System of a Down",
+                                My_Reason: "I like the part after the intro",
+
+                            },
+                            {
+                                My_Rating: 9,
+                                Year_Released: 2001,
+                                Song_Name: "Deer Dance",
+                                Song_Artist: "System of a Down",
+                                My_Reason: "I really like the winding sounding guitar part",
+
+                            },
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1990,
+                                Song_Name: "Thunderstruck",
+                                Song_Artist: "AC/DC",
+                                My_Reason: "Probably my favorite AC/DC song, is also one of the first songs I learned on guitar",
+
+                            },
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1976,
+                                Song_Name: "Dirty Deeds Done Dirt Cheap",
+                                Song_Artist: "AC/DC",
+                                My_Reason: "Very classic rock song, an iconic riff",
+
+                            },
+                            {
+                                My_Rating: 9.5,
+                                Year_Released: 2005,
+                                Song_Name: "Through the Fire and Flames",
+                                Song_Artist: "DragonForce",
+                                My_Reason: "This song could always give me energy if I had none, also reminds me that I suck at guitar hero",
+
+                            },
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1962,
+                                Song_Name: "Miserlou",
+                                Song_Artist: "Dick Dale",
+                                My_Reason: "A staple of surf rock songs, never fails to sound cool",
+
+                            },
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 2019,
+                                Song_Name: "Sommernacht",
+                                Song_Artist: "Bernhard Lackner",
+                                My_Reason: "A great jazz fusion song that I think has a cool guitar part",
+
+                            },
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1980,
+                                Song_Name: "Crazy train",
+                                Song_Artist: "Ozzy Osbourne",
+                                My_Reason: "Crazy? I was crazy once. They locked me in a train. A train with this song. This song made me crazy.",
+
+                            },
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1976,
+                                Song_Name: "Breezin'",
+                                Song_Artist: "George Benson",
+                                My_Reason: "A chill song with a great guitar part",
+
+                            },
+                            {
+                                My_Rating: 8,
+                                Year_Released: 2002,
+                                Song_Name: "Can't Stop",
+                                Song_Artist: "Red Hot Chili Peppers",
+                                My_Reason: "The guitar part has a cool buildup to it at the beginning",
+
+                            },
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1976,
+                                Song_Name: "(Don't Fear) The Reaper",
+                                Song_Artist: "Blue Oyster Cult",
+                                My_Reason: "A great and iconic riff in a pretty good song",
+
+                            },
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1977,
+                                Song_Name: "Go Your Own Way",
+                                Song_Artist: "Fleetwood Mac",
+                                My_Reason: "Reminds me of Sultans of Swing with the chord progression",
+
+                            },
+                            {
+                                My_Rating: 9,
+                                Year_Released: 1996,
+                                Song_Name: "Wanted Dead Or Alive",
+                                Song_Artist: "Bon Jovi",
+                                My_Reason: "Makes me feel like a cowboy, I like the 12 string intro part",
+
+                            },
+                            {
+                                My_Rating: 7,
+                                Year_Released: 2006,
+                                Song_Name: "Snow (Hey Oh)",
+                                Song_Artist: "Red Hot Chili Peppers",
+                                My_Reason: "Iconic RHCP riff that I think is cool",
+
+                            },
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1991,
+                                Song_Name: "Enter Sandman",
+                                Song_Artist: "Metallica",
+                                My_Reason: "One of the most iconic riffs of all time, better that I could play it endlessly and never start the song.",
+
+                            },
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1989,
+                                Song_Name: "Runnin' Down A Dream",
+                                Song_Artist: "Tom Petty",
+                                My_Reason: "One of my favorite Tom Petty songs, I like its more energetic feel",
+
+                            },
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1983,
+                                Song_Name: "Die With Your Boots On",
+                                Song_Artist: "Iron Maiden",
+                                My_Reason: "I like the sound that Iron Maiden has with the songs on this album",
+
+                            },
+                            {
+                                My_Rating: 8.6,
+                                Year_Released: 2005,
+                                Song_Name: "Hermes",
+                                Song_Artist: "Santana",
+                                My_Reason: "I like the more Latin-esque sound of this song, mixed with a more rock sounding guitar",
+
+                            },
+                            {
+                                My_Rating: 9,
+                                Year_Released: 2007,
+                                Song_Name: "Unbound(The Wild Ride)",
+                                Song_Artist: "Avenged Sevenfold",
+                                My_Reason: "A great mix of both piano and guitar in an amazing song",
+
+                            },
+                            {
+                                My_Rating: 8,
+                                Year_Released: 2003,
+                                Song_Name: "Seven Nation Army",
+                                Song_Artist: "The White Stripes",
+                                My_Reason: "A simple, yet iconic song that has some cool guitar",
+
+                            },
+                            {
+                                My_Rating: 8.7,
+                                Year_Released: 1970,
+                                Song_Name: "Truckin",
+                                Song_Artist: "Grateful Dead",
+                                My_Reason: "I like the country-rock-blues fusion feel",
+
+                            },
+                            {
+                                My_Rating: 8.2,
+                                Year_Released: 1971,
+                                Song_Name: "A Horse With No Name",
+                                Song_Artist: "America",
+                                My_Reason: "Even though it is rather simple, it has a nice deserty sound to it",
+
+                            },
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1972,
+                                Song_Name: "Ventura Highway",
+                                Song_Artist: "America",
+                                My_Reason: "I like the free sounding nature of this song",
+
+                            },
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1970,
+                                Song_Name: "Iron Man",
+                                Song_Artist: "Black Sabbath",
+                                My_Reason: "A really cool song with some awesome guitar",
+
+                            },
+                        ]
+                        // Add X axis
+                        var x = d3.scaleLinear()
+                            .domain([1950, 2023])
+                            .range([0, width]);
+                        svg.append("g")
+                            .attr("transform", "translate(0," + height + ")")
+                            .call(d3.axisBottom(x).tickFormat(d3.format("d")));  // Use tickFormat to format the numbers without commas);
+
+
+
+                        // Add Y axis
+                        var y = d3.scaleLinear()
+                            .domain([6.5, 10])
+                            .range([height, 0]);
+                        svg.append("g")
+                            .call(d3.axisLeft(y));
+
+
+                        // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
+                        // Its opacity is set to 0: we don't see it by default.
+                        svg.append("text")
+                            .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.top + 20) + ")")
+                            .style("text-anchor", "middle")
+                            .text("Year Released");
+
+                        // Add Y axis label
+                        svg.append("text")
+                            .attr("transform", "rotate(-90)")
+                            .attr("y", 0 - margin.left)
+                            .attr("x", 0 - (height / 2))
+                            .attr("dy", "1em")
+                            .style("text-anchor", "middle")
+                            .text("My Rating");
+                        var tooltip = d3.select("#my_dataviz")
+                            .append("div")
+                            .style("opacity", 0)
+                            .attr("class", "tooltip")
+                            .style("background-color", "#FFDD7C")
+                            .style("border", "solid")
+                            .style("border-width", "1px")
+                            .style("border-radius", "5px")
+                            .style("padding", "10px")
+                            .style("position", "absolute");
+
+
+
+                        // A function that change this tooltip when the user hover a point.
+                        // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+                        var mouseover = function (d) {
+                            tooltip
+                                .style("opacity", 1)
+                        }
+
+                        var mousemove = function (d) {
+                            var xPos = d3.mouse(this)[0] + window.scrollX; // Add the current horizontal scroll position
+                            var yPos = d3.mouse(this)[1] + 90;
+                            tooltip
+                                .html(d.Song_Name + "<br>" + d.Song_Artist + "<br>" + d.My_Reason)
+                                .style("left", xPos + "px")
+                                .style("top", yPos + "px")
+                                .style("display", "block");
+
+                        }
+
+                        // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+                        var mouseleave = function (d) {
+                            tooltip
+                                .transition()
+                                .duration(200)
+                                .style("opacity", 0)
+                        }
+
+                        // Add dots
+                        svg.append('g')
+                            .selectAll("dot")
+                            .data(data.filter(function (d, i) { return i < 50 })) // the .filter part is just to keep a few dots on the chart, not all of them
+                            .enter()
+                            .append("circle")
+                            .attr("cx", function (d) { return x(d.Year_Released); })
+                            .attr("cy", function (d) { return y(d.My_Rating); })
+                            .attr("r", 7)
+                            .style("fill", "#Ec8058")
+                            .style("opacity", 0.7)
+                            .style("stroke", "white")
+                            .on("mouseover", mouseover)
+                            .on("mousemove", mousemove)
+                            .on("mouseleave", mouseleave)
+                        console.log(data);
+
+
+                    </script>
+                </div>
+                <br />
+                <div class='col-md-4'></div>
+            </div>
+        </div>
+        <div class='container'>
+            <div class='row'>
+
+                <div class='col-md-4'></div>
+                <div class='col-md-4'>
+                    <script>
+
+                        // set the dimensions and margins of the graph
+                        var margin = { top: 10, right: 30, bottom: 30, left: 60 },
+                            width = 700 - margin.left - margin.right,
+                            height = 540 - margin.top - margin.bottom;
+
+                        // append the svg object to the body of the page
+                        var svg = d3.select("#my_dataviz2")
+                            .append("svg")
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                            .attr("transform",
+                                "translate(" + margin.left + "," + margin.top + ")");
+
+                        //Read the data
+
+                        let data2 = [
+                            {
+                                My_Rating: 10,
+                                Year_Released: 1851,
+                                Song_Name: "Hungarian Rhapsody No. 2",
+                                Song_Artist: "Franz Liszt",
+                                My_Reason: "One of the best piano compositions in my opinion, uses the full range of how the piano can be used"
+                            },
+
+                            {
+                                My_Rating: 9.5,
+                                Year_Released: 1899,
+                                Song_Name: "Maple Leaf Rag",
+                                Song_Artist: "Scott Joplin",
+                                My_Reason: "It's classic and is a great ragtime song"
+                            },
+
+                            {
+                                My_Rating: 10,
+                                Year_Released: 1907,
+                                Song_Name: "Molly on the Shore",
+                                Song_Artist: "Percy Grainger",
+                                My_Reason: "One of my favorite piano songs, I like its Irish sound"
+                            },
+
+                            {
+                                My_Rating: 9,
+                                Year_Released: 1983,
+                                Song_Name: "That's All",
+                                Song_Artist: "Genesis",
+                                My_Reason: "While repetitive, I think the main piano riff is cool"
+                            },
+
+                            {
+                                My_Rating: 9.5,
+                                Year_Released: 1996,
+                                Song_Name: "Virtual Insanity",
+                                Song_Artist: "Jamiroquai",
+                                My_Reason: "A funky feeling song that makes me want to slowly slide across the floor while approaching the camera"
+                            },
+
+                            {
+                                My_Rating: 9,
+                                Year_Released: 1981,
+                                Song_Name: "Don’t Stop Believin'",
+                                Song_Artist: "Journey",
+                                My_Reason: "A song that has a lot of personal meaning to me, with a great piano part"
+                            },
+
+                            {
+                                My_Rating: 9.5,
+                                Year_Released: 1939,
+                                Song_Name: "Take the A Train",
+                                Song_Artist: "Duke Ellington",
+                                My_Reason: "One of my favorite classic jazz piano songs, the intro is also very iconic"
+                            },
+
+                            {
+                                My_Rating: 9,
+                                Year_Released: 1960,
+                                Song_Name: "I can't get started",
+                                Song_Artist: "Duke Ellington",
+                                My_Reason: "A great Ellington piece that I like a lot"
+                            },
+
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1962,
+                                Song_Name: "Caravan",
+                                Song_Artist: "Duke Ellington",
+                                My_Reason: "While not the first or last rendition of this song, this one has Duke Ellington playing the piano for the main part of the song"
+                            },
+
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1959,
+                                Song_Name: "How Deep Is The Ocean",
+                                Song_Artist: "Bill Evans Trio",
+                                My_Reason: "A great and relaxing song that has some great piano"
+                            },
+
+                            {
+                                My_Rating: 9,
+                                Year_Released: 1960,
+                                Song_Name: "Giant Steps",
+                                Song_Artist: "John Coltrane",
+                                My_Reason: "A song that's so fast, yet great, the piano player can't even keep up"
+                            },
+
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1967,
+                                Song_Name: "Straight, No Chaser",
+                                Song_Artist: "Thelonious Monk",
+                                My_Reason: "A nice jazz song with a cool piano intro"
+                            },
+
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1935,
+                                Song_Name: "Isn't This a Lovely Day",
+                                Song_Artist: "Ella Fitzgerald and Louis Armstrong",
+                                My_Reason: "A peaceful, yet complex piano song"
+                            },
+
+                            {
+                                My_Rating: 9,
+                                Year_Released: 1798,
+                                Song_Name: "Piano Concerto No. 1 in C Major",
+                                Song_Artist: "Ludwig van Beethoven",
+                                My_Reason: "One of the most intense piano songs I have ever heard"
+                            },
+
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1962,
+                                Song_Name: "Skating in Central Park",
+                                Song_Artist: "Bill Evans & Jim Hall",
+                                My_Reason: "A magical piano and guitar song that gives off a nice, cozy, wintery vibe"
+                            },
+
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1958,
+                                Song_Name: "Splanky",
+                                Song_Artist: "Count Basie",
+                                My_Reason: "A great song that has a lot of the iconic Count Basie sound"
+                            },
+
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1980,
+                                Song_Name: "Autumn Leaves",
+                                Song_Artist: "Bill Evans Trio",
+                                My_Reason: "A very nice sounding song with some great piano playing"
+                            },
+
+                            {
+                                My_Rating: 9,
+                                Year_Released: 1987,
+                                Song_Name: "Minuano (Six Eight)",
+                                Song_Artist: "Pat Metheny Group",
+                                My_Reason: "One of my favorite jazz fusion songs with a great second part to it"
+                            },
+
+                            {
+                                My_Rating: 9,
+                                Year_Released: 1974,
+                                Song_Name: "Killer Queen",
+                                Song_Artist: "Queen",
+                                My_Reason: "One of the most iconic Queen songs, this one has a great piano sound"
+                            },
+
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1985,
+                                Song_Name: "Head Over Heels",
+                                Song_Artist: "Tears For Fears",
+                                My_Reason: "The intro is very iconic and powerful"
+                            },
+
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1974,
+                                Song_Name: "Bad Company",
+                                Song_Artist: "Bad Company",
+                                My_Reason: "Bad Company (sorry just had to keep the naming scheme)"
+                            },
+
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1902,
+                                Song_Name: "The Entertainer",
+                                Song_Artist: "Scott Joplin",
+                                My_Reason: "One of the most iconic ragtime songs, it has great syncopation"
+                            },
+
+                            {
+                                My_Rating: 8.5,
+                                Year_Released: 1896,
+                                Song_Name: "Piano Concerto No.5 'Egyptian' in F major, po 103 II Andante",
+                                Song_Artist: "Camille Saint-Saëns",
+                                My_Reason: "A very unique sounding piece by one of my favorite classical composers"
+                            },
+
+                            {
+                                My_Rating: 7.5,
+                                Year_Released: 1725,
+                                Song_Name: "Minuet in G",
+                                Song_Artist: "Christian Petzold",
+                                My_Reason: "A classical piano song that taught me some good piano technique"
+                            },
+
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1784,
+                                Song_Name: "Rondo Alla Turca",
+                                Song_Artist: "Wolfgang Amadeus Mozart",
+                                My_Reason: "Not only one of the most iconic piano songs, but classical piano as well"
+                            },
+
+                            {
+                                My_Rating: 8,
+                                Year_Released: 1788,
+                                Song_Name: "Piano Sonata No.16 in C Major",
+                                Song_Artist: "Wolfgang Amadeus Mozart",
+                                My_Reason: "One of my favorite piano songs for when I was learning"
+                            }
+                        ]
+                        // Add X axis
+                        var x = d3.scaleLinear()
+                            .domain([1720, 2000])
+                            .range([0, width]);
+                        svg.append("g")
+                            .attr("transform", "translate(0," + height + ")")
+                            .call(d3.axisBottom(x).tickFormat(d3.format("d")));  // Use tickFormat to format the numbers without commas);
+
+                        // Add Y axis
+                        var y = d3.scaleLinear()
+                            .domain([6.5, 10])
+                            .range([height, 0]);
+                        svg.append("g")
+                            .call(d3.axisLeft(y));
+                        svg.append("text")
+                            .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.top + 20) + ")")
+                            .style("text-anchor", "middle")
+                            .text("Year Released");
+
+                        // Add Y axis label
+                        svg.append("text")
+                            .attr("transform", "rotate(-90)")
+                            .attr("y", 0 - margin.left)
+                            .attr("x", 0 - (height / 2))
+                            .attr("dy", "1em")
+                            .style("text-anchor", "middle")
+                            .text("My Rating");
+
+                        // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
+                        // Its opacity is set to 0: we don't see it by default.
+                        var tooltip2 = d3.select("#my_dataviz2")
+                            .append("div")
+                            .style("opacity", 0)
+                            .attr("class", "tooltip2")
+                            .style("background-color", "#FFDD7C")
+                            .style("border", "solid")
+                            .style("border-width", "1px")
+                            .style("border-radius", "5px")
+                            .style("padding", "10px")
+                            .style("position", "absolute");
+
+
+
+                        // A function that change this tooltip when the user hover a point.
+                        // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+                        var mouseover = function (d) {
+                            tooltip2
+                                .style("opacity", 1)
+                        }
+
+                        var mousemove = function (d) {
+                            var xPos = d3.mouse(this)[0] + window.scrollX; // Add the current horizontal scroll position
+                            var yPos = d3.mouse(this)[1] + 90;
+                            tooltip2
+                                .html(d.Song_Name + "<br>" + d.Song_Artist + "<br>" + d.My_Reason)
+                                .style("left", xPos + "px")
+                                .style("top", yPos + "px")
+                                .style("display", "block");
+                        }
+
+                        // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+                        var mouseleave = function (d) {
+                            tooltip2
+                                .transition()
+                                .duration(200)
+                                .style("opacity", 0)
+                        }
+
+                        // Add dots
+                        svg.append('g')
+                            .selectAll("dot")
+                            .data(data2.filter(function (d, i) { return i < 50 })) // the .filter part is just to keep a few dots on the chart, not all of them
+                            .enter()
+                            .append("circle")
+                            .attr("cx", function (d) { return x(d.Year_Released); })
+                            .attr("cy", function (d) { return y(d.My_Rating); })
+                            .attr("r", 7)
+                            .style("fill", "#Ec8058")
+                            .style("opacity", 0.7)
+                            .style("stroke", "white")
+                            .on("mouseover", mouseover)
+                            .on("mousemove", mousemove)
+                            .on("mouseleave", mouseleave)
+                        console.log(data2);
+
+
+                    </script>
+                </div>
+                <div class='col-md-4'></div>
+            </div>
+        </div>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-4'></div>
+
+                <div class='col-md-4'>
+
+                    <script>
+
+                        // List of words
+                        var myWords = [
+                            { word: "Dire Straits", size: 25, frequency: 2 },
+                            { word: "The Eagles", size: 15, frequency: 1 },
+                            { word: "Deep Purple", size: 15, frequency: 1 },
+                            { word: "Yes", size: 15, frequency: 1 },
+                            { word: "Iron Maiden", size: 15, frequency: 1 },
+                            { word: "Red Hot Chili Peppers", size: 35, frequency: 3 },
+                            { word: "Lynyrd Skynyrd", size: 15, frequency: 1 },
+                            { word: "Tenacious D", size: 15, frequency: 1 },
+                            { word: "Mountain", size: 15, frequency: 1 },
+                            { word: "Aerosmith", size: 15, frequency: 1 },
+                            { word: "Mötley Crüe", size: 15, frequency: 1 },
+                            { word: "Black Sabbath", size: 15, frequency: 1 },
+                            { word: "Avenged Sevenfold", size: 45, frequency: 5 },
+                            { word: "Metallica", size: 25, frequency: 2 },
+                            { word: "Jimi Hendrix", size: 15, frequency: 1 },
+                            { word: "Chuck Berry", size: 15, frequency: 1 },
+                            { word: "System of a Down", size: 35, frequency: 3 },
+                            { word: "AC/DC", size: 25, frequency: 2 },
+                            { word: "DragonForce", size: 15, frequency: 1 },
+                            { word: "Dick Dale", size: 15, frequency: 1 },
+                            { word: "Bernhard Lackner", size: 15, frequency: 1 },
+                            { word: "Ozzy Osbourne", size: 15, frequency: 1 },
+                            { word: "George Benson", size: 15, frequency: 1 },
+                            { word: "Blue Oyster Cult", size: 15, frequency: 1 },
+                            { word: "Fleetwood Mac", size: 15, frequency: 1 },
+                            { word: "Bon Jovi", size: 15, frequency: 1 },
+                            { word: "Tom Petty", size: 15, frequency: 1 },
+                            { word: "Santana", size: 15, frequency: 1 },
+                            { word: "The White Stripes", size: 15, frequency: 1 },
+                            { word: "Grateful Dead", size: 15, frequency: 1 },
+                            { word: "America", size: 25, frequency: 2 },
+                            { word: "Steely Dan", size: 15, frequency: 1 },
+                            { word: "Franz Liszt", size: 15, frequency: 1 },
+                            { word: "Scott Joplin", size: 25, frequency: 2 },
+                            { word: "Percy Granger", size: 15, frequency: 1 },
+                            { word: "Genisis", size: 15, frequency: 1 },
+                            { word: "Jamiroquoi", size: 15, frequency: 1 },
+                            { word: "Journey", size: 15, frequency: 1 },
+                            { word: "Duke Ellington", size: 35, frequency: 3 },
+                            { word: "Bill Evans Trio", size: 25, frequency: 2 },
+                            { word: "John Coltrane", size: 15, frequency: 1 },
+                            { word: "Thelonious Monk", size: 15, frequency: 1 },
+                            { word: "Ella Fitzgerald and Louis Armstrong", size: 15, frequency: 1 },
+                            { word: "Ludwig van Beethoven", size: 15, frequency: 1 },
+                            { word: "Bill Evans & Jim Hall", size: 15, frequency: 1 },
+                            { word: "Count Basie", size: 15, frequency: 1 },
+                            { word: "Pat Methany Group", size: 15, frequency: 1 },
+                            { word: "Queen", size: 15, frequency: 1 },
+                            { word: "Tears For Fears", size: 15, frequency: 1 },
+                            { word: "Bad Company", size: 15, frequency: 1 },
+                            { word: "Camille Saint Saens", size: 15, frequency: 1 },
+                            { word: "Christian Petzold", size: 15, frequency: 1 },
+                            { word: "Wolfgang Amadeus Mozart", size: 15, frequency: 1 },
+                        ]
+
+                        // set the dimensions and margins of the graph
+                        var margin = { top: 10, right: 10, bottom: 10, left: 10 },
+                            width = 750 - margin.left - margin.right,
+                            height = 450 - margin.top - margin.bottom;
+
+                        // append the svg object to the body of the page
+                        var svg = d3.select("#my_dataviz3").append("svg")
+                            .attr("width", width + margin.left + margin.right)
+                            .attr("height", height + margin.top + margin.bottom)
+                            .append("g")
+                            .attr("transform",
+                                "translate(" + margin.left + "," + margin.top + ")");
+
+                        // Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
+                        // Wordcloud features that are different from one word to the other must be here
+                        var layout = d3.layout.cloud()
+                            .size([width, height])
+                            .words(myWords.map(function (d) { return { text: d.word, size: d.size, frequency: d.frequency }; }))
+                            .padding(5)        //space between words
+                            .rotate(function () { return ~~(Math.random() * 2) * 90; })
+                            .fontSize(function (d) { return d.size; })      // font size of words
+                            .on("end", draw);
+                        layout.start();
+
+                        // This function takes the output of 'layout' above and draw the words
+                        // Wordcloud features that are THE SAME from one word to the other can be here
+                        function draw(words) {
+                            svg
+                                .append("g")
+                                .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+                                .selectAll("text")
+                                .data(words)
+                                .enter().append("text")
+                                .style("font-size", function (d) { return d.size; })
+                                .style("fill", "#69b3a2")
+                                .attr("text-anchor", "middle")
+                                .style("font-family", "Impact")
+                                .attr("transform", function (d) {
+                                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                                })
+                                .text(function (d) { return d.text; })
+                                .on("mouseover", handleMouseOver)
+                                .on("mouseout", handleMouseOut);
+                        }
+
+                        var tooltip3 = d3.select("body")
+                            .append("div")
+                            .style("opacity", 0)
+                            .attr("class", "tooltip3")
+                            .style("background-color", "#FFDD7C")
+                            .style("border", "solid")
+                            .style("border-width", "1px")
+                            .style("border-radius", "5px")
+                            .style("padding", "10px")
+                            .style("position", "absolute");
+
+                        function handleMouseOver(d, i) {
+                            // Show the frequency of the word in a tooltip
+                            d3.select(this).style("fill", "red"); // Change color on hover
+                            tooltip3.transition().duration(200).style("opacity", .9);
+                            tooltip3.html("Frequency: " + d.frequency)
+                                .style("left", (d3.event.pageX) + "px")
+                                .style("top", (d3.event.pageY - 28) + "px");
+                        }
+
+                        function handleMouseOut(d, i) {
+                            // Restore original color on mouseout
+                            d3.select(this).style("fill", "#69b3a2");
+                            tooltip3.transition().duration(500).style("opacity", 0);
+                        }
+                    </script>
+
+                </div>
+                <div class='col-md-4'></div>
+            </div>
+        </div>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-md-3'>
+                    
+                    <p id="IntroPara">Video 1: I'm playing the intro to Hotel California in this one.</p>
+                    
+                    <video class="responsive" controls>
+                        <source src="Assets/HC.MOV" type="video/mp4">
+
+                    </video>
+                    
+                </div>
+                <div class='col-md-6'>
+                    <p id="IntroPara">After looking through all of my data, there are many conclusions that can be made.
+                        First of all,
+                        there is a much smaller sample size for the piano than there is for the guitar, yet the piano
+                        seems to cover a wider variety of genres. The guitar section is, for the most part, all rock and
+                        metal, with some softer rock in there as well. However, there are a large number of subgenres,
+                        such as southern rock, classic rock, alternative rock, and progressive rock. In terms of the
+                        graphs themselves, the guitar one has an average score around an 8.5. That being said, the
+                        majority of the songs are around an 8 or a 9.
+                    </p>
+                </div>
+                <div class='col-md-3'>
+                    <p id="IntroPara">Video 2: I am playing the intro and solo to Sultans of swing in this one.</p>
+                    <video class="responsive" controls>
+                        <source src="Assets/SoS.MOV" type="video/mp4">
+
+                    </video>
+                </div>
+            </div>
+            <div id="JCShhh">
+        <img src="Assets\JieChart.png" class="responsive">
+    </div>
+        </div>
+        
+    </body>
+</div>
+</html>
